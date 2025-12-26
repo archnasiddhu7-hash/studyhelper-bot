@@ -9,17 +9,17 @@ from telegram.ext import (
 )
 from openai import OpenAI
 
-# OpenAI client
+# OpenAI client (API key env se aayegi)
 client = OpenAI()
 
-# -------- START COMMAND --------
+# ---------- START COMMAND ----------
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "👋 Hello! Main AI Study Helper Bot hoon 🤖\n\n"
         "📚 Question bhejo, main help karunga 🙂"
     )
 
-# -------- AI REPLY --------
+# ---------- CHAT HANDLER ----------
 async def chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         await update.message.chat.send_action("typing")
@@ -34,7 +34,7 @@ async def chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception as e:
         await update.message.reply_text(f"❌ Error: {e}")
 
-# -------- MAIN --------
+# ---------- MAIN ----------
 def main():
     TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
